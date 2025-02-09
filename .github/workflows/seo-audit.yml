@@ -1,0 +1,37 @@
+name: SEO Audit
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: HTML Validation
+        run: |
+          npm install -g html-validator-cli
+          find . -name "*.html" -exec html-validator {} \;
+          
+      - name: Meta Tags Check
+        run: |
+          echo "Checking meta tags..."
+          grep -r "<meta" . --include="*.html" || true
+          
+      - name: Schema.org Validation
+        run: |
+          echo "Validating schema.org markup..."
+          grep -r "schema.org" . --include="*.html" || true
+          
+      - name: Check Image Alt Text
+        run: |
+          echo "Checking image alt attributes..."
+          grep -r "<img" . --include="*.html" | grep -v "alt=" && exit 1 || echo "All images have alt text"
+          
+      - name: Brand Integration Check
+        run: |
+          echo "Verifying brand integration..."
+          grep -r "github.com/Lovingthemoo-74\|lovingthemoo@gmail.com" . || exit 1

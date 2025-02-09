@@ -1,0 +1,34 @@
+{
+  "name": "seo-friendly-personal-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio showcasing SEO best practices and modern web development techniques",
+  "author": "LovingTheMoo <lovingthemoo@gmail.com> (https://github.com/Lovingthemoo-74)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "serve showcase",
+    "test": "lighthouse http://localhost:3000 --output=json --output-path=./test-results/lighthouse-report.json || true",
+    "validate": "html-validator showcase/index.html --verbose",
+    "deploy": "gh-pages -d showcase"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lovingthemoo-74/SEO-Friendly-Personal-Portfolio-Website.git"
+  },
+  "keywords": [
+    "portfolio",
+    "seo",
+    "web-development",
+    "accessibility",
+    "performance"
+  ],
+  "bugs": {
+    "url": "https://github.com/Lovingthemoo-74/SEO-Friendly-Personal-Portfolio-Website/issues"
+  },
+  "homepage": "https://github.com/Lovingthemoo-74/SEO-Friendly-Personal-Portfolio-Website#readme",
+  "devDependencies": {
+    "gh-pages": "^3.2.3",
+    "html-validator-cli": "^7.0.1",
+    "lighthouse": "^9.6.8",
+    "serve": "^14.2.1"
+  }
+}
